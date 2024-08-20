@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Risco de Base de Dados</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Container principal -->
+    <div class="caixa">
+        <h1>Calculadora de Risco de Base de Dados</h1>
+        <!-- Formulário para calcular o risco -->
+        <form id="formulario-risco">
+            <!-- Seleção da quantidade de linhas na base de dados -->
+            <label for="linhas">Quantidade de linhas na base:</label>
+            <select id="linhas" required>
+                <option value="0.1125">0 a 1 milhão</option>
+                <option value="0.225">1,1 milhão até 5 milhões</option>
+                <option value="0.45">Mais de 5 milhões</option>
+            </select>
+
+            <!-- Seleção da quantidade de identificadores primários na base de dados -->
+            <label for="identificadores-primarios">Quantidade de identificadores primários na base:</label>
+            <select id="identificadores-primarios" required>
+                <option value="0.1125">0 a 1</option>
+                <option value="0.225">2 a 4</option>
+                <option value="0.45">5 ou mais</option>
+            </select>
+
+            <!-- Seleção da quantidade de quasi-identificadores -->
+            <label for="quasi-identificadores">Quantidade de quasi-identificadores:</label>
+            <div class="entrada-com-informacao">
+                <select id="quasi-identificadores" required>
+                    <option value="0.225">0 a 5</option>
+                    <option value="0.45">6 a 15</option>
+                    <option value="0.9">16 ou mais</option>
+                </select>
+                <!-- Ícone de informação com tooltip -->
+                <span class="icone-informacao" onmouseover="mostrarTooltip()" onmouseout="esconderTooltip()">ℹ️</span>
+                <div class="tooltip" id="tooltip">
+                    Quasi-identificadores são atributos que, isoladamente, não identificam diretamente uma pessoa,
+                    mas em conjunto com outros atributos podem revelar identidades. Exemplos incluem CEP, data de nascimento, gênero, etc.
+                </div>
+            </div>
+
+            <!-- Seleção do tipo de compartilhamento dos dados -->
+            <label for="compartilhamento">Compartilhamento:</label>
+            <select id="compartilhamento" required>
+                <option value="0.6">Interno</option>
+                <option value="1.2">Externo</option>
+                <option value="1.2">Internacional</option>
+            </select>
+
+            <!-- Checkbox para indicar se há dados sensíveis -->
+            <label>Dados sensíveis:</label>
+            <input type="checkbox" id="dados-sensiveis">
+
+            <!-- Checkbox para indicar se há dados de criança/adolescente -->
+            <label>Dados de criança/adolescente:</label>
+            <input type="checkbox" id="dados-menores">
+
+            <!-- Checkbox para indicar se há dados financeiros -->
+            <label>Dados financeiros:</label>
+            <input type="checkbox" id="dados-financeiros">
+
+            <!-- Botão para calcular o risco -->
+            <button type="button" onclick="calcularRisco()">Calcular Risco</button>
+        </form>
+        <!-- Área onde o resultado será exibido -->
+        <div id="resultado"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
