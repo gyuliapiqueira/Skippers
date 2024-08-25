@@ -1,0 +1,682 @@
+/* Alinhamento do conteúdo da página */
+/* Configuração global */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Poppins, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Esconde qualquer rolagem horizontal */
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #04044d;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    margin-left: 70px;
+}
+
+.safra-logo {
+    width: 150px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin-right: 70px;
+    font-weight: 400;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: white;
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+    left: 0;
+    background: white;
+}
+
+/* Estilo para o link ativo */
+.nav-links a.active {
+    font-weight: bold;
+    color: white;
+}
+
+/* Home */
+.home-container {
+    width: 100%; /* Ajuste feito aqui */
+    margin: 0;
+    padding: 40px;
+    height: 40vw;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    background-color: #04044d;
+    color: white;
+}
+
+.home-content {
+    max-width: 40%;
+    text-align: left;
+}
+
+.home-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-right: 0px;
+    margin-top: 190px;
+    width: 530px;
+}
+
+.home-content h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 200;
+    text-align: left;
+    position: relative;
+}
+
+.home-content h1::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px; /* Ajuste a posição vertical da barrinha */
+    width: 80px; /* Largura da barrinha */
+    height: 4px; /* Altura da barrinha */
+    background-color: white; /* Cor da barrinha */
+}
+
+.highlight {
+    font-weight: 600;
+    color: #ffffff; /* Cor para destaque das palavras */
+}
+
+.home-content p {
+    margin: 20px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.btn-calculate {
+    background-color: #ffffff;
+    color: #1a2a64;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 170px;
+    font-family: Poppins, sans-serif;
+    font-weight: 400;
+}
+
+.btn-calculate:hover {
+    background-color: #9BBCED;
+    color: #ffffff;
+}
+
+/* Sobre o projeto */
+.sobre-container {
+    display: flex;
+    align-items: center;
+    padding: 60px 40px; /* Diminuído para evitar estouro da largura */
+    background-color: #f4f4f4;
+    color: #04044d;
+    flex-wrap: wrap;
+    width: 100%; /* Ajuste para 100% em vez de 100vw */
+    margin-top: 70px;
+}
+
+.icon-grid-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 60px; /* Ajustado para não causar estouro */
+}
+
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px; /* Ajuste o espaçamento entre as caixas */
+    position: relative;
+    z-index: 3;
+    margin-left: 10px;
+}
+
+.icon-box {
+    background-color: #04044d;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 140px;
+    height: 140px;
+}
+
+.icon-box img {
+    width: 80%;
+    height: auto;
+}
+
+/* Tamanho ajustado das caixas menores */
+.small-box {
+    width: 130px;
+    height: 130px;
+}
+
+.icon-grid-container::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-color: #1864d780;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.icon-grid-container::after {
+    content: '';
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background-color: #ffffff; /* Cor do "furo" branco */
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.sobre-content {
+    max-width: 50%;
+    margin-left: 100px;
+    margin-top: -50px;
+}
+
+.sobre-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #04044d;
+    font-weight: 700;
+    text-align: center;
+}
+
+.sobre-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #04044d;
+    margin-left: 40px;
+}
+
+.sobre-content strong {
+    font-weight: 700;
+    color: #04044d;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sobre-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .icon-grid-container {
+        margin-bottom: 40px;
+        margin-right: 0;
+    }
+
+    .sobre-content {
+        max-width: 100%;
+    }
+}
+
+/* Beneficios */
+
+.beneficios-container {
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: -20px;
+}
+
+.beneficios-container h2 {
+    font-size: 2rem;
+    color: #04044d;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+.beneficio-card {
+    background-color: #ffffff;
+    border: 2px solid #00000068;
+    border-top-right-radius: 60px; /* Arredonda o canto superior direito */
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 360px;
+    height: 260px;
+}
+
+
+.beneficio-card h3 {
+    font-size: 1.5rem;
+    color: #04044d;
+    margin: 20px 0 10px;
+}
+
+.beneficio-card p {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+}
+
+.beneficio-card .icon {
+    background-color: #e0ecf8;
+    padding: 0px;
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+}
+
+.beneficio-card .icon img {
+    width: 60%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+
+
+/* Container da calculadora */
+.calculadora-container {
+    max-width: 900px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.calculadora-container h2 {
+    font-size: 1.8rem;
+    color: #04044d;
+    font-weight: 700;
+}
+
+.calculadora-container .descricao {
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Caixa da calculadora */
+.caixa {
+    background-color: #e7f0fc;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Caixa com efeito de flip */
+.caixa-flip {
+    position: relative;
+    width: 100%;
+    height: auto;
+    perspective: 1000px; /* Define a perspectiva para o efeito 3D */
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    backface-visibility: hidden; /* Esconde a face traseira quando não visível */
+    transition: transform 0.8s;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Face frontal */
+.front-face {
+    background-color: #e7f0fc;
+    padding: 30px;
+}
+
+/* Face traseira */
+.back-face {
+    background-color: #ffffff;
+    padding: 30px;
+    transform: rotateY(180deg);
+}
+
+/* Efeito de flip */
+.caixa-flip.flip-active .front-face {
+    transform: rotateY(180deg);
+}
+
+.caixa-flip.flip-active .back-face {
+    transform: rotateY(0deg);
+}
+
+/* Botão de voltar */
+.btn-voltar {
+    width: 100%;
+    padding: 15px;
+    background-color: #04044d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-voltar:hover {
+    background-color: #333366;
+}
+
+/* Alinhamento do resultado */
+#resultado {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+/* Form content dividido em duas colunas */
+.form-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-coluna {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    color: #333333;
+    font-weight: 600;
+}
+
+select, input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+
+/* Estilos da entrada com informações */
+.entrada-com-informacao {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icone-informacao {
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+}
+
+.tooltip-linhas {
+    display: none;
+    position: absolute;
+    top: -5px;
+    left: 300px;
+    transform: translateX(-50%);
+    background-color: #333333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 12px;
+    z-index: 10;
+    text-align: center;
+}
+
+.tooltip-primarios {
+    display: none;
+    position: absolute;
+    top: -5px;
+    left: 300px;
+    transform: translateX(-50%);
+    background-color: #333333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 12px;
+    z-index: 10;
+    text-align: center;
+}
+
+.tooltip-quasi {
+    display: none;
+    position: absolute;
+    top: -5px;
+    left: 250px;
+    transform: translateX(-50%);
+    background-color: #333333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    font-size: 12px;
+    z-index: 10;
+    text-align: center;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333333 transparent;
+}
+
+.icone-informacao:hover + .tooltip {
+    display: block;
+}
+
+.tipo-compartilhamento {
+    display: flex;
+    gap: 20px; /* Espaçamento entre os grupos de checkbox e label */
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaçamento entre o checkbox e o label */
+}
+
+.tipo-compartilhamento label {
+    margin: 0;
+    font-weight: 500;
+}
+
+.onoff {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.entrada-com-informacao {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.icone-informacao {
+    margin-left: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Botão de liga/desliga personalizado */
+.onoff input.toggle {
+    display: none;
+}
+
+.onoff input.toggle + label {
+    display: inline-block;
+    position: relative;
+    box-shadow: inset 0 0 0px 1px #d5d5d5;
+    height: 30px;
+    width: 50px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.onoff input.toggle + label:before {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    background: rgba(19, 191, 17, 0);
+    transition: 0.1s ease-in-out;
+}
+
+.onoff input.toggle + label:after {
+    content: "";
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 0;
+    left: 0px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: 0.1s ease-in-out;
+}
+
+.onoff input.toggle:checked + label:before {
+    width: 50px;
+    background: #13bf11;
+}
+
+.onoff input.toggle:checked + label:after {
+    left: 20px;
+    box-shadow: inset 0 0 0 1px #13bf11, 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Estilo do botão */
+.btn-calcular {
+    width: 100%;
+    padding: 15px;
+    background-color: #04044d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-calcular:hover {
+    background-color: #333366;
+}
+
+/* Estilo do resultado */
+#resultado {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Alinhamento das opções de compartilhamento na horizontal */
+.tipo-compartilhamento {
+    display: flex;
+    gap: 10px;
+}
+
+.tipo-compartilhamento label {
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+
