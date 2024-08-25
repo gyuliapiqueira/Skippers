@@ -1,76 +1,245 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Risco de Base de Dados</title>
+    <title>Skippers</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+
 </head>
+
 <body>
-    <!-- Container principal -->
-    <div class="caixa">
-        <h1>Calculadora de Risco de Base de Dados</h1>
-        <!-- Formulário para calcular o risco -->
-        <form id="formulario-risco">
-            <!-- Seleção da quantidade de linhas na base de dados -->
-            <label for="linhas">Quantidade de linhas na base:</label>
-            <select id="linhas" required>
-                <option value="0.1125">0 a 1 milhão</option>
-                <option value="0.225">1,1 milhão até 5 milhões</option>
-                <option value="0.45">Mais de 5 milhões</option>
-            </select>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">
+                <img src="imgs/safra-logo.png" class="safra-logo">
+            </a>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#calculadora">Calculadora de Risco</a></li>
+        </ul>
+    </nav>
 
-            <!-- Seleção da quantidade de identificadores primários na base de dados -->
-            <label for="identificadores-primarios">Quantidade de identificadores primários na base:</label>
-            <select id="identificadores-primarios" required>
-                <option value="0.1125">0 a 1</option>
-                <option value="0.225">2 a 4</option>
-                <option value="0.45">5 ou mais</option>
-            </select>
-
-            <!-- Seleção da quantidade de quasi-identificadores -->
-            <label for="quasi-identificadores">Quantidade de quasi-identificadores:</label>
-            <div class="entrada-com-informacao">
-                <select id="quasi-identificadores" required>
-                    <option value="0.225">0 a 5</option>
-                    <option value="0.45">6 a 15</option>
-                    <option value="0.9">16 ou mais</option>
-                </select>
-                <!-- Ícone de informação com tooltip -->
-                <span class="icone-informacao" onmouseover="mostrarTooltip()" onmouseout="esconderTooltip()">ℹ️</span>
-                <div class="tooltip" id="tooltip">
-                    Quasi-identificadores são atributos que, isoladamente, não identificam diretamente uma pessoa,
-                    mas em conjunto com outros atributos podem revelar identidades. Exemplos incluem CEP, data de nascimento, gênero, etc.
-                </div>
-            </div>
-
-            <!-- Seleção do tipo de compartilhamento dos dados -->
-            <label for="compartilhamento">Compartilhamento:</label>
-            <select id="compartilhamento" required>
-                <option value="0.6">Interno</option>
-                <option value="1.2">Externo</option>
-                <option value="1.2">Internacional</option>
-            </select>
-
-            <!-- Checkbox para indicar se há dados sensíveis -->
-            <label>Dados sensíveis:</label>
-            <input type="checkbox" id="dados-sensiveis">
-
-            <!-- Checkbox para indicar se há dados de criança/adolescente -->
-            <label>Dados de criança/adolescente:</label>
-            <input type="checkbox" id="dados-menores">
-
-            <!-- Checkbox para indicar se há dados financeiros -->
-            <label>Dados financeiros:</label>
-            <input type="checkbox" id="dados-financeiros">
-
-            <!-- Botão para calcular o risco -->
-            <button type="button" onclick="calcularRisco()">Calcular Risco</button>
-        </form>
-        <!-- Área onde o resultado será exibido -->
-        <div id="resultado"></div>
+    <!-- Home -->
+    <div class="home-container" id="home">
+        <div class="home-content">
+            <h1 class="fine-text">Gerencie os <span class="highlight">riscos</span> das suas bases de <span
+                    class="highlight">dados!</span></h1>
+            <p>Nossa solução oferece uma análise precisa e intuitiva para avaliar o risco de sua base de dados.</p>
+            <button class="btn-calculate">Calcule já!</button>
+        </div>
+        <div class="home-image">
+            <img src="imgs/imagem-home.png" alt="Team analyzing data">
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Sobre -->
+    <div class="sobre-container" id="sobre">
+        <div class="icon-grid-container">
+            <div class="icon-grid">
+                <div class="icon-box small-box" style="margin-left: 0px; margin-top: -15px;">
+                    <img src="imgs/cubos.png" alt="Icone 1">
+                </div>
+                <div class="icon-box" style="margin-bottom: 20px; margin-left: 20px;">
+                    <img src="imgs/protecao.png" alt="Icone 2">
+                </div>
+                <div class="icon-box" style="margin-right: 20px; margin-top: 20px;">
+                    <img src="imgs/testes.png" alt="Icone 3">
+                </div>
+                <div class="icon-box small-box" style="margin-left: 30px; margin-top: 40px;">
+                    <img src="imgs/calculadora.png" alt="Icone 4">
+                </div>
+            </div>
+        </div>
+        <div class="sobre-content">
+            <h2>SOBRE O PROJETO</h2>
+            <p>Desenvolvemos uma <strong>solução</strong> que vai além de uma simples <strong>matriz de risco</strong>.
+                Nossa ferramenta cruza e analisa a <strong>probabilidade</strong> e o <strong>impacto</strong> de
+                <strong>reidentificação em bases de dados</strong>, com uma <strong>calculadora automatizada</strong>
+                que classifica o risco em baixo, médio ou alto. Com testes rigorosos para calibrar os pesos das
+                variáveis e total <strong>conformidade com a LGPD (Lei Geral de Proteção de Dados)</strong>, oferecemos
+                uma abordagem prática e eficiente para a proteção de dados.
+            </p>
+        </div>
+    </div>
+
+    <!-- Beneficios -->
+    <div class="beneficios-container" id="beneficios">
+        <h2>BENEFÍCIOS</h2>
+        <div class="beneficios-grid">
+            <div class="beneficio-card">
+                <div class="icon">
+                    <img src="imgs/seguranca-de-dados.png" alt="Segurança de Dados">
+                </div>
+                <h3>Segurança de Dados</h3>
+                <p>Redução da probabilidade da reidentificação de dados.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon" style="background-color: #04044d;">
+                    <img src="imgs/reducao-risco.png" alt="Redução de Risco">
+                </div>
+                <h3>Redução de Risco</h3>
+                <p>Diminuição de incidentes de privacidade de dados.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon">
+                    <img src="imgs/compartilhar.png" alt="Compartilhamento">
+                </div>
+                <h3>Compartilhamento</h3>
+                <p>Segurança reforçada no compartilhamento interno e externo.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon" style="background-color: #04044d;">
+                    <img src="imgs/eficiencia.png" alt="Eficiência">
+                </div>
+                <h3>Eficiência</h3>
+                <p>Redução do tempo de aprovação para utilização das bases de dados internas.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon">
+                    <img src="imgs/cliente.png" alt="Proteção do Cliente">
+                </div>
+                <h3>Proteção do Cliente</h3>
+                <p>Reforçar a lealdade e confiança com os clientes.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon" style="background-color: #04044d;">
+                    <img src="imgs/regulamentacao.png" alt="Regulamentação">
+                </div>
+                <h3>Regulamentação</h3>
+                <p>Auxiliar a manter a conformidade da LGPD (Lei Geral de Proteção de Dados).</p>
+            </div>
+        </div>
+    </div>
+
+    
+
+<!-- Calculadora de risco -->
+<div class="calculadora-container">
+    <h2>CALCULADORA DE RISCOS</h2>
+    <p class="descricao">Com base nos dados que você deseja avaliar quanto ao risco de reidentificação, responda as perguntas abaixo e descubra em qual quadrante sua base se enquadra. Em caso de dúvida, passe o mouse sobre o ícone de informação (i) para mais detalhes.</p>
+    <div class="caixa-flip">
+        <!-- Face frontal com as perguntas -->
+        <div class="face front-face">
+            <form id="formulario-risco">
+                <div class="form-content">
+                    <!-- Coluna 1 -->
+                    <div class="form-coluna" style="margin-top: 10px;">
+                        <label for="linhas">Quantidade de linhas na base:</label>
+                        <div class="entrada-com-informacao">
+                            <select id="linhas" required>
+                                <option value="0.1125">0 a 1 milhão</option>
+                                <option value="0.225">1,1 milhão até 2 milhões</option>
+                                <option value="0.45">Mais de 2 milhões</option>
+                            </select>
+                            <span class="icone-informacao" onmouseover="mostrarTooltip()"
+                                onmouseout="esconderTooltip()">ℹ️</span>
+                            <div class="tooltip-linhas" id="tooltip-linhas">
+                                Informação sobre quantidade de linhas.
+                            </div>
+                        </div>
+
+                        <label for="identificadores-primarios">Quantidade de identificadores primários:</label>
+                        <div class="entrada-com-informacao">
+                            <select id="identificadores-primarios" required>
+                                <option value="0.1125">0 a 1</option>
+                                <option value="0.225">2 a 4</option>
+                                <option value="0.45">5 ou mais</option>
+                            </select>
+                            <span class="icone-informacao" onmouseover="mostrarTooltipP()"
+                                onmouseout="esconderTooltipP()">ℹ️</span>
+                            <div class="tooltip-primarios" id="tooltip-primarios">
+                                Informação sobre identificadores primários.
+                            </div>
+                        </div>
+
+                        <label for="quasi-identificadores">Quantidade de quasi-identificadores:</label>
+                        <div class="entrada-com-informacao">
+                            <select id="quasi-identificadores" required>
+                                <option value="0.225">0 a 5</option>
+                                <option value="0.45">6 a 15</option>
+                                <option value="0.9">16 ou mais</option>
+                            </select>
+                            <span class="icone-informacao" onmouseover="mostrarTooltipQ()"
+                                onmouseout="esconderTooltipQ()">ℹ️ </span>
+                            <div class="tooltip-quasi" id="tooltip-quasi">
+                                Quasi-identificadores são atributos que, isoladamente, não identificam diretamente uma pessoa, mas em conjunto com outros atributos podem revelar identidades.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 2 -->
+                    <div class="form-coluna">
+                        <label style="margin-bottom: 10px;" for="compartilhamento">Tipo de compartilhamento: <span class="icone-informacao" onmouseover="mostrarTooltip()"
+                            onmouseout="esconderTooltip()">ℹ️ </span></label> 
+                        <div class="tipo-compartilhamento">
+                            <div class="checkbox-group" style="margin-left: 40px;">
+                                <input type="checkbox" id="interno" name="compartilhamento" value="0.6">
+                                <label for="interno" style="margin-top: -15px;">Interno</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="externo" name="compartilhamento" value="1.2">
+                                <label for="externo" style="margin-top: -15px;">Externo</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="internacional" name="compartilhamento" value="1.2">
+                                <label for="internacional" style="margin-top: -15px;">Internacional</label>
+                            </div>
+                        </div>
+                        <div class="onoff">
+                            <div class="entrada-com-informacao" style="margin-left: 95px; margin-top: -15px;">
+                                <label>Existem dados sensíveis? <span class="icone-informacao" onmouseover="mostrarTooltip()"
+                                    onmouseout="esconderTooltip()">ℹ️ </span></label>
+                            </div>
+                            <input type="checkbox" class="toggle" id="dados-sensiveis" >
+                            <label for="dados-sensiveis" style="margin-left: 175px;"></label>
+                        </div>
+
+                        <div class="onoff">
+                            <div class="entrada-com-informacao" style="width: 340px; margin-top: -25px; margin-left: 45px;">
+                                <label>Existem dados de crianças e/ou menores de idade? <span class="icone-informacao" onmouseover="mostrarTooltip()"
+                                    onmouseout="esconderTooltip()">ℹ️ </span></label>
+                            </div>
+                            <input type="checkbox" class="toggle" id="dados-menores">
+                            <label for="dados-menores" style="margin-left: 175px;"></label>
+                        </div>
+
+                        <div class="onoff">
+                            <div class="entrada-com-informacao" style="margin-top: -25px; margin-left: 85px;">
+                                <label>Existem dados financeiros? <span class="icone-informacao" onmouseover="mostrarTooltip()"
+                                    onmouseout="esconderTooltip()">ℹ️ </span></label>
+                            </div>
+                            <input type="checkbox" class="toggle" id="dados-financeiros">
+                            <label for="dados-financeiros" style="margin-left: 175px;"></label>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-calcular" onclick="calcularRisco()">Calcular Risco</button>
+            </form>
+        </div>
+
+        <!-- Face traseira com o resultado -->
+        <div class="face back-face">
+            <div id="resultado"></div>
+            <button class="btn-voltar" onclick="voltarFormulario()">Voltar</button>
+        </div>
+      
+    </div>
+</div>
+<div class="footer" style="height: 100px; background-color: #04044d; margin-top: 600px; display: flex; align-items: center; justify-content: center;">
+    <span style="color: rgb(255, 255, 255);">SKIPPERS © 2024</span>
+</div>
+
+<script src="script.js"></script>
 </body>
+
 </html>
