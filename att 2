@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skippers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">
+                <img src="imgs/safra-logo.png" class="safra-logo" alt="Safra logo">
+            </a>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#calculadora">Calculadora de Risco</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home -->
+    <div class="home-container" id="home">
+        <div class="home-content">
+            <h1 class="fine-text">Gerencie os <span class="highlight">riscos</span> das suas bases de <span
+                    class="highlight">dados!</span></h1>
+            <p>Nossa solução oferece uma análise precisa e intuitiva para avaliar o risco de sua base de dados.</p>
+            <button class="btn-calculate" onclick="rolarParaCalculadora()">Calcule já!</button>
+        </div>
+        <div class="home-image">
+            <img src="imgs/imagem-home.png" alt="Team analyzing data">
+        </div>
+    </div>
+
+    <!-- Sobre -->
+    <div class="sobre-container" id="sobre">
+        <div class="icon-grid-container">
+            <div class="icon-grid">
+                <div class="icon-box small-box">
+                    <img src="imgs/cubos.png" alt="Icone 1">
+                </div>
+                <div class="icon-box">
+                    <img src="imgs/protecao.png" alt="Icone 2">
+                </div>
+                <div class="icon-box">
+                    <img src="imgs/testes.png" alt="Icone 3">
+                </div>
+                <div class="icon-box small-box">
+                    <img src="imgs/calculadora.png" alt="Icone 4">
+                </div>
+            </div>
+        </div>
+        <div class="sobre-content">
+            <h2>SOBRE O PROJETO</h2>
+            <p>Desenvolvemos uma <strong>solução</strong> que vai além de uma simples <strong>matriz de risco</strong>.
+                Nossa ferramenta cruza e analisa a <strong>probabilidade</strong> e o <strong>impacto</strong> de
+                <strong>reidentificação em bases de dados</strong>, com uma <strong>calculadora automatizada</strong>
+                que classifica o risco em baixo, médio ou alto. Com testes rigorosos para calibrar os pesos das
+                variáveis e total <strong>conformidade com a LGPD</strong>, oferecemos
+                uma abordagem prática e eficiente para a proteção de dados.
+            </p>
+        </div>
+    </div>
+
+    <!-- Benefícios -->
+    <div class="beneficios-container" id="beneficios">
+        <h2>BENEFÍCIOS</h2>
+        <div class="beneficios-grid">
+            <div class="beneficio-card">
+                <div class="icon">
+                    <img src="imgs/seguranca-de-dados.png" alt="Segurança de Dados">
+                </div>
+                <h3>Segurança de Dados</h3>
+                <p>Redução da probabilidade da reidentificação de dados.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon" style="background-color: #04044d;">
+                    <img src="imgs/reducao-risco.png" alt="Redução de Risco">
+                </div>
+                <h3>Redução de Risco</h3>
+                <p>Diminuição de incidentes de privacidade de dados.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon">
+                    <img src="imgs/compartilhar.png" alt="Compartilhamento">
+                </div>
+                <h3>Compartilhamento</h3>
+                <p>Segurança reforçada no compartilhamento interno e externo.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon" style="background-color: #04044d;">
+                    <img src="imgs/eficiencia.png" alt="Eficiência">
+                </div>
+                <h3>Eficiência</h3>
+                <p>Redução do tempo de aprovação para utilização das bases de dados internas.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon">
+                    <img src="imgs/cliente.png" alt="Proteção do Cliente">
+                </div>
+                <h3>Proteção do Cliente</h3>
+                <p>Reforçar a lealdade e confiança com os clientes.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon" style="background-color: #04044d;">
+                    <img src="imgs/regulamentacao.png" alt="Regulamentação">
+                </div>
+                <h3>Regulamentação</h3>
+                <p>Auxiliar a manter a conformidade da LGPD (Lei Geral de Proteção de Dados).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculadora de risco -->
+    <div class="calculadora-container" id="calculadora">
+        <h2>CALCULADORA DE RISCOS</h2>
+        <p class="descricao">Com base nos dados que você deseja avaliar quanto ao risco de reidentificação, responda as
+            perguntas abaixo e descubra em qual quadrante sua base se enquadra. Em caso de dúvida, passe o mouse sobre o
+            ícone de informação (i) para mais detalhes.</p>
+        <div class="caixa-flip">
+            <!-- Face frontal com as perguntas -->
+            <div class="face front-face">
+                <form id="formulario-risco">
+                    <div class="form-content">
+                        <!-- Coluna 1 -->
+                        <div class="form-coluna">
+                            <label for="linhas">Quantidade de linhas na base:</label>
+                            <div class="entrada-com-informacao">
+                                <select id="linhas" required>
+                                    <option value="0.1125">0 a 1 milhão</option>
+                                    <option value="0.225">1,1 milhão até 2 milhões</option>
+                                    <option value="0.45">Mais de 2 milhões</option>
+                                </select>
+                                <span class="icone-informacao" onmouseover="mostrarTooltip()"
+                                    onmouseout="esconderTooltip()">ℹ️</span>
+                                <div class="tooltip-linhas" id="tooltip-linhas">
+                                    Informação sobre quantidade de linhas que existem na sua base.
+                                </div>
+                            </div>
+
+                            <label for="identificadores-primarios">Quantidade de identificadores primários:</label>
+                            <div class="entrada-com-informacao">
+                                <select id="identificadores-primarios" required>
+                                    <option value="0.1125">0 a 1</option>
+                                    <option value="0.225">2 a 4</option>
+                                    <option value="0.45">5 ou mais</option>
+                                </select>
+                                <span class="icone-informacao" onmouseover="mostrarTooltipP()"
+                                    onmouseout="esconderTooltipP()">ℹ️</span>
+                                <div class="tooltip-primarios" id="tooltip-primarios">
+                                    Identificadores primários, segundo a Autoridade Nacional de Proteção de Dados
+                                    (ANPD), referem-se a informações que, por si só, permitem a identificação direta de
+                                    uma pessoa natural. São dados que, isoladamente, são suficientes para identificar
+                                    unicamente um indivíduo, sem a necessidade de cruzamento com outras informações.<br>
+                                    Exemplos: nome completo, CPF, RG.
+                                </div>
+                            </div>
+
+                            <label for="quasi-identificadores">Quantidade de quasi-identificadores:</label>
+                            <div class="entrada-com-informacao">
+                                <select id="quasi-identificadores" required>
+                                    <option value="0.225">0 a 5</option>
+                                    <option value="0.45">6 a 15</option>
+                                    <option value="0.9">16 ou mais</option>
+                                </select>
+                                <span class="icone-informacao" onmouseover="mostrarTooltipQ()"
+                                    onmouseout="esconderTooltipQ()">ℹ️</span>
+                                <div class="tooltip-quasi" id="tooltip-quasi">
+                                    Quasi-identificadores, de acordo com as diretrizes da Autoridade Nacional de
+                                    Proteção de Dados (ANPD) e o contexto da Lei Geral de Proteção de Dados (LGPD),
+                                    referem-se a dados que, isoladamente, não identificam diretamente uma pessoa
+                                    natural, mas que, quando combinados com outros dados, podem levar à identificação de
+                                    um indivíduo.<br>
+                                    Exemplos: data de nascimento, CEP, gênero.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coluna 2 -->
+                        <div class="form-coluna">
+                            <label for="compartilhamento">Tipo de compartilhamento: <span class="icone-informacao"
+                                    onmouseover="mostrarTooltipC()" onmouseout="esconderTooltipC()">ℹ️ </span></label>
+                            <div class="tipo-compartilhamento">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="interno" name="compartilhamento" value="0.6">
+                                    <label for="interno">Interno</label>
+                                    <div class="tooltip-compartilhamento" id="tooltip-compartilhamento">
+                                        Informação para identificar o tipo de compartilhamento da sua base.
+                                    </div>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="externo" name="compartilhamento" value="1.2">
+                                    <label for="externo">Externo</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="internacional" name="compartilhamento" value="1.2">
+                                    <label for="internacional">Internacional</label>
+                                </div>
+                            </div>
+
+                            <div class="onoff">
+                                <div class="entrada-com-informacao">
+                                    <label>Existem dados sensíveis? <span class="icone-informacao"
+                                            onmouseover="mostrarTooltipD()" onmouseout="esconderTooltipD()">ℹ️ </span>
+                                    </label>
+                                    <div class="tooltip-dadosSensiveis" id="tooltip-dadosSensiveis">
+                                        Dados sensíveis são uma categoria especial de dados pessoais que, devido à sua
+                                        natureza, merecem um nível mais elevado de proteção. Exemplos: origem racial,
+                                        convicção religiosa, opinião política.
+                                    </div>
+                                </div>
+                                <input type="checkbox" class="toggle" id="dados-sensiveis">
+                                <label for="dados-sensiveis"></label>
+                            </div>
+
+                            <div class="onoff">
+                                <div class="entrada-com-informacao">
+                                    <label>Existem dados de idosos e/ou menores de idade? <span class="icone-informacao"
+                                            onmouseover="mostrarTooltipIc()" onmouseout="esconderTooltipIc()">ℹ️ </span>
+                                    </label>
+                                    <div class="tooltip-idososCriancas" id="tooltip-idososCriancas">
+                                        Informações pessoais de idosos ou crianças.
+                                    </div>
+                                </div>
+                                <input type="checkbox" class="toggle" id="dados-menores">
+                                <label for="dados-menores"></label>
+                            </div>
+
+                            <div class="onoff">
+                                <div class="entrada-com-informacao">
+                                    <label>Existem dados financeiros? <span class="icone-informacao"
+                                            onmouseover="mostrarTooltipDF()" onmouseout="esconderTooltipDF()">ℹ️ </span>
+                                    </label>
+                                    <div class="tooltip-dadosFinanceiros" id="tooltip-dadosFinanceiros">
+                                        Informações detalhadas sobre os dados financeiros. Exemplo: número da conta
+                                        bancária.
+                                    </div>
+                                </div>
+                                <input type="checkbox" class="toggle" id="dados-financeiros">
+                                <label for="dados-financeiros"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-calcular" onclick="calcularRisco()">Calcular Risco</button>
+                </form>
+            </div>
+
+            <!-- Face traseira com o resultado -->
+            <div class="face back-face">
+                <div id="resultado"></div>
+                <button class="btn-voltar" onclick="voltarFormulario()">Voltar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>SKIPPERS © 2024</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+/* Configuração global */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5vw;
+    background-color: #04044d;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.safra-logo {
+    width: 150px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+}
+
+/* Home */
+.home-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 5vw;
+    background-color: #04044d;
+    color: white;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.home-content {
+    max-width: 40%;
+}
+
+.home-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-calculate {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    background-color: white;
+    color: #04044d;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.home-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+/* Sobre */
+.sobre-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 5vw;
+    background-color: #f4f4f4;
+    flex-wrap: wrap;
+}
+
+.sobre-content {
+    max-width: 50%;
+}
+
+.sobre-content h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sobre-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.icon-box {
+    background-color: #04044d;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+}
+
+.icon-box img {
+    width: 80%;
+    height: auto;
+}
+
+/* Benefícios */
+.beneficios-container {
+    padding: 60px 5vw;
+    text-align: center;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.beneficio-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 100%;
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    background-color: #e0ecf8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.beneficio-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.beneficio-card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Calculadora */
+.calculadora-container {
+    padding: 60px 5vw;
+    text-align: center;
+}
+
+.form-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-coluna {
+    display: flex;
+    flex-direction: column;
+}
+
+.entrada-com-informacao {
+    display: flex;
+    align-items: center;
+}
+
+.icone-informacao {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.tooltip-linhas,
+.tooltip-primarios,
+.tooltip-quasi,
+.tooltip-compartilhamento,
+.tooltip-dadosSensiveis,
+.tooltip-idososCriancas,
+.tooltip-dadosFinanceiros {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+}
+
+.icone-informacao:hover + .tooltip-linhas,
+.icone-informacao:hover + .tooltip-primarios,
+.icone-informacao:hover + .tooltip-quasi,
+.icone-informacao:hover + .tooltip-compartilhamento,
+.icone-informacao:hover + .tooltip-dadosSensiveis,
+.icone-informacao:hover + .tooltip-idososCriancas,
+.icone-informacao:hover + .tooltip-dadosFinanceiros {
+    display: block;
+}
+
+.btn-calcular {
+    padding: 15px;
+    background-color: #04044d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-voltar {
+    width: 100%;
+    padding: 15px;
+    background-color: #04044d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    background-color: #04044d;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .home-content {
+        max-width: 60%;
+    }
+
+    .home-content h1 {
+        font-size: 2rem;
+    }
+
+    .sobre-content {
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 40px 5vw;
+    }
+
+    .home-content {
+        max-width: 100%;
+    }
+
+    .home-image img {
+        margin-top: 20px;
+    }
+
+    .sobre-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .icon-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-content {
+        grid-template-columns: 1fr;
+    }
+}
