@@ -1,0 +1,203 @@
+/* Configuração global */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Poppins, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #04044d;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    margin-left: 2vw;
+}
+
+.safra-logo {
+    width: 150px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin-right: 2vw;
+    font-weight: 400;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+/* Home */
+.home-container {
+    width: 100%;
+    margin: 0;
+    padding: 5vw;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #04044d;
+    color: white;
+    flex-wrap: wrap;
+}
+
+.home-content {
+    max-width: 40%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.home-image img {
+    max-width: 90%;
+    height: auto;
+}
+
+.home-content h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+.home-content p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .home-content {
+        max-width: 50%;
+    }
+
+    .home-content h1 {
+        font-size: 2rem;
+    }
+
+    .home-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home-content {
+        max-width: 90%;
+    }
+
+    .home-image img {
+        margin-top: 30px;
+    }
+
+    .home-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .home-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Sobre o projeto */
+.sobre-container {
+    display: flex;
+    align-items: center;
+    padding: 4vw;
+    background-color: #f4f4f4;
+    color: #04044d;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.sobre-content {
+    max-width: 50%;
+    margin-left: 4vw;
+}
+
+.sobre-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #04044d;
+}
+
+@media (max-width: 1024px) {
+    .sobre-content {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .sobre-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sobre-content {
+        max-width: 100%;
+    }
+}
+
+/* Benefícios */
+.beneficios-container {
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 40px;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Caixa calculadora */
+.calculadora-container {
+    max-width: 90%;
+    margin: 80px auto;
+}
+
+@media (min-width: 1440px) {
+    .home-content h1 {
+        font-size: 3rem;
+    }
+
+    .sobre-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .beneficio-card h3 {
+        font-size: 2rem;
+    }
+}
