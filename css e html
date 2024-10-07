@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skippers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">
+                <img src="imgs/safra-logo.png" class="safra-logo" alt="Safra logo">
+            </a>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#calculadora">Calculadora de Risco</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home -->
+    <div class="home-container" id="home">
+        <div class="home-content">
+            <h1 class="fine-text">Gerencie os <span class="highlight">riscos</span> das suas bases de <span
+                    class="highlight">dados!</span></h1>
+            <p>Nossa solução oferece uma análise precisa e intuitiva para avaliar o risco de sua base de dados.</p>
+            <button class="btn-calculate" onclick="rolarParaCalculadora()">Calcule já!</button>
+        </div>
+        <div class="home-image">
+            <img src="imgs/imagem-home.png" alt="Team analyzing data">
+        </div>
+    </div>
+
+    <!-- Sobre -->
+    <div class="sobre-container" id="sobre">
+        <div class="icon-grid-container">
+            <div class="icon-grid">
+                <div class="icon-box small-box">
+                    <img src="imgs/cubos.png" alt="Icone 1">
+                </div>
+                <div class="icon-box">
+                    <img src="imgs/protecao.png" alt="Icone 2">
+                </div>
+                <div class="icon-box">
+                    <img src="imgs/testes.png" alt="Icone 3">
+                </div>
+                <div class="icon-box small-box">
+                    <img src="imgs/calculadora.png" alt="Icone 4">
+                </div>
+            </div>
+        </div>
+        <div class="sobre-content">
+            <h2>SOBRE O PROJETO</h2>
+            <p>Desenvolvemos uma <strong>solução</strong> que vai além de uma simples <strong>matriz de risco</strong>.
+                Nossa ferramenta cruza e analisa a <strong>probabilidade</strong> e o <strong>impacto</strong> de
+                <strong>reidentificação em bases de dados</strong>, com uma <strong>calculadora automatizada</strong>
+                que classifica o risco em baixo, médio ou alto. Com testes rigorosos para calibrar os pesos das
+                variáveis e total <strong>conformidade com a LGPD</strong>, oferecemos
+                uma abordagem prática e eficiente para a proteção de dados.
+            </p>
+        </div>
+    </div>
+
+    <!-- Benefícios -->
+    <div class="beneficios-container" id="beneficios">
+        <h2>BENEFÍCIOS</h2>
+        <div class="beneficios-grid">
+            <div class="beneficio-card">
+                <div class="icon">
+                    <img src="imgs/seguranca-de-dados.png" alt="Segurança de Dados">
+                </div>
+                <h3>Segurança de Dados</h3>
+                <p>Redução da probabilidade da reidentificação de dados.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon icon-bg-dark">
+                    <img src="imgs/reducao-risco.png" alt="Redução de Risco">
+                </div>
+                <h3>Redução de Risco</h3>
+                <p>Diminuição de incidentes de privacidade de dados.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon">
+                    <img src="imgs/compartilhar.png" alt="Compartilhamento">
+                </div>
+                <h3>Compartilhamento</h3>
+                <p>Segurança reforçada no compartilhamento interno e externo.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon icon-bg-dark">
+                    <img src="imgs/eficiencia.png" alt="Eficiência">
+                </div>
+                <h3>Eficiência</h3>
+                <p>Redução do tempo de aprovação para utilização das bases de dados internas.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon">
+                    <img src="imgs/cliente.png" alt="Proteção do Cliente">
+                </div>
+                <h3>Proteção do Cliente</h3>
+                <p>Reforçar a lealdade e confiança com os clientes.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="icon icon-bg-dark">
+                    <img src="imgs/regulamentacao.png" alt="Regulamentação">
+                </div>
+                <h3>Regulamentação</h3>
+                <p>Auxiliar a manter a conformidade da LGPD (Lei Geral de Proteção de Dados).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculadora de risco -->
+    <div class="calculadora-container" id="calculadora">
+        <h2>CALCULADORA DE RISCOS</h2>
+        <p class="descricao">Com base nos dados que você deseja avaliar quanto ao risco de reidentificação, responda as
+            perguntas abaixo e descubra em qual quadrante sua base se enquadra. Em caso de dúvida, passe o mouse sobre o
+            ícone de informação (i) para mais detalhes.</p>
+        <div class="caixa-flip">
+            <div class="face front-face">
+                <!-- Formulário aqui -->
+            </div>
+            <div class="face back-face">
+                <div id="resultado"></div>
+                <button class="btn-voltar" onclick="voltarFormulario()">Voltar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>SKIPPERS © 2024</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+/* Configuração global */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5vw;
+    background-color: #04044d;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.safra-logo {
+    width: 150px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+}
+
+/* Home */
+.home-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 5vw;
+    background-color: #04044d;
+    color: white;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+.home-content {
+    max-width: 40%;
+}
+
+.home-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-calculate {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    background-color: white;
+    color: #04044d;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.home-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+/* Sobre */
+.sobre-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 5vw;
+    background-color: #f4f4f4;
+    flex-wrap: wrap;
+}
+
+.sobre-content {
+    max-width: 50%;
+}
+
+.sobre-content h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sobre-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.icon-box {
+    background-color: #04044d;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+}
+
+.icon-box img {
+    width: 80%;
+    height: auto;
+}
+
+/* Benefícios */
+.beneficios-container {
+    padding: 60px 5vw;
+    text-align: center;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.beneficio-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    background-color: #e0ecf8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-bg-dark {
+    background-color: #04044d;
+}
+
+.beneficio-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.beneficio-card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Calculadora */
+.calculadora-container {
+    padding: 60px 5vw;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    background-color: #04044d;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .home-content {
+        max-width: 60%;
+    }
+
+    .home-content h1 {
+        font-size: 2rem;
+    }
+
+    .sobre-content {
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 40px 5vw;
+    }
+
+    .home-content {
+        max-width: 100%;
+    }
+
+    .home-image img {
+        margin-top: 20px;
+    }
+
+    .sobre-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .icon-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+    }
+}
